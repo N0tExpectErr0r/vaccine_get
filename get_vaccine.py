@@ -99,7 +99,7 @@ if __name__ == '__main__':
                 for vaccine in vaccine_list:
                     print("\t{}. name: {}, enable: {}".format(index, vaccine.get("text"), vaccine.get("enable")))
                     index = index + 1
-                    if "九价" in vaccine.get("text"): 
+                    if "九价" in vaccine.get("text") and vaccine.get("enable") == True: 
                         cmd = "curl -d \'title={} 九价疫苗可预约&desp={}\' -X POST https://sctapi.ftqq.com/SCT155769TeFx6NcwGJFDxoU4zxOWNr96L.send".format(
                             hospital_name,
                             "快前往预约吧！"
