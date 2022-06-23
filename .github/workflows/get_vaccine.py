@@ -93,8 +93,12 @@ if __name__ == '__main__':
             hospital_info = get(query_vaccine_param)
             hospital_name = hospital_info.get("cname")
             vaccine_list = hospital_info.get("list")
-            if vaccine_list is not None:
+            if vaccine_list is not None and len(vaccine_list) > 0:
+                index = 1
+                print("Vaccine list:")
                 for vaccine in vaccine_list:
+                    print("\t{}. name: {}, enable: {}".format(index, vaccine.get("text"), vaccine.get("enable")))
+                    index = index + 1
                     if "九价" in vaccine.get("text") and vaccine.get("enable") == True: 
                         cmd = "curl -d \'title={} 九价疫苗可预约&desp={}\' -X POST https://sctapi.ftqq.com/SCT155769TeFx6NcwGJFDxoU4zxOWNr96L.send".format(
                             hospital_name,
